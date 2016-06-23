@@ -2,15 +2,24 @@
 
 <h1><%= @song.title %></h1>
 
-<p>
-  <%= markdown(@song.lyrics) %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <%= markdown(@song.lyrics) %>
+    </p>
+  </div>
+  <div class="col-md-6">
+    <%- if @song.tablature.present? %>
+        <div class="vex-tabdiv" scale=1.0 editor="false"><%= @song.tablature %></div>
+    <% end %>
+  </div>
+</div>
 
 <%- if @song.notes.present? %>
-<p>
-  <strong>Notes:</strong>
-  <%= @song.notes %>
-</p>
+  <p>
+    <strong>Notes:</strong>
+    <%= @song.notes %>
+  </p>
 <% end %>
 
 <%= link_to 'Edit', edit_song_path(@song) %> |
