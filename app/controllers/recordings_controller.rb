@@ -4,7 +4,7 @@ class RecordingsController < ApplicationController
   # GET /recordings
   # GET /recordings.json
   def index
-    @recordings = Recording.all
+    @recordings = Recording.all.order(:name)
   end
 
   # GET /recordings/1
