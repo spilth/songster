@@ -13,7 +13,7 @@
 
     <div class="field">
       <%= f.label :song_id %>
-      <%= f.collection_select(:song_id, Song.all.sort(:title), :id, :title) %>
+      <%= f.collection_select(:song_id, Song.all.order(:title), :id, :title) %>
     </div>
 
     <div class="field">
