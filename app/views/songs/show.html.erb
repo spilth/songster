@@ -3,36 +3,37 @@
 <h1><%= @song.title %></h1>
 
 <%- if @song.soundcloud_id.present? %>
-
-<div class="row">
-  <div class="col-md-12">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no"
-            src="http://w.soundcloud.com/player/?url=http%3A//api.soundcloud.com/tracks/<%= @song.soundcloud_id %>&amp;auto_play=false&amp;show_user=true">
-    </iframe>
-  </div>
-</div>
+    <div class="row">
+      <div class="col-md-12">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no"
+                src="http://w.soundcloud.com/player/?url=http%3A//api.soundcloud.com/tracks/<%= @song.soundcloud_id %>&amp;auto_play=false&amp;show_user=true">
+        </iframe>
+      </div>
+    </div>
 <% end %>
 
 <% if @song.recordings.any? %>
-    <h2>Recordings</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Recordings</h2>
 
-    <table class="table">
-
-    <%@song.recordings.each do |recording| %>
-          <tr>
-            <td><%= recording.name %></td>
-            <td>
-              <audio controls>
-                <source src="<%= recording.url %>" type="audio/mp3">
-                Your browser does not support the audio element.
-              </audio>
-            </td>
-            <td><%= link_to 'Edit', edit_recording_path(recording) %></td>          </tr>
-    <% end %>
-    </table>
-
+        <table class="table">
+          <% @song.recordings.each do |recording| %>
+              <tr>
+                <td><%= recording.name %></td>
+                <td>
+                  <audio controls>
+                    <source src="<%= recording.url %>" type="audio/mp3">
+                    Your browser does not support the audio element.
+                  </audio>
+                </td>
+                <td><%= link_to 'Edit', edit_recording_path(recording) %></td>
+              </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
 <% end %>
-
 
 <div class="row">
   <div class="col-md-6">
@@ -52,11 +53,11 @@
 </div>
 
 <%- if @song.notes.present? %>
-  <p>
+    <p>
     <h2>Notes</h2>
 
     <p><%= markdown(@song.notes) %></p>
-  </p>
+    </p>
 <% end %>
 
 <%= link_to 'Edit', edit_song_path(@song) %> |
