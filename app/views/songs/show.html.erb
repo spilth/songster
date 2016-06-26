@@ -16,18 +16,20 @@
 <% if @song.recordings.any? %>
     <h2>Recordings</h2>
 
-    <dl>
+    <table class="table">
 
     <%@song.recordings.each do |recording| %>
-          <dt><%= recording.name %></dt>
-          <dd>
-            <audio controls>
-              <source src="<%= recording.url %>" type="audio/mp3">
-              Your browser does not support the audio element.
-            </audio>
-          </dd>
+          <tr>
+            <td><%= recording.name %></td>
+            <td>
+              <audio controls>
+                <source src="<%= recording.url %>" type="audio/mp3">
+                Your browser does not support the audio element.
+              </audio>
+            </td>
+            <td><%= link_to 'Edit', edit_recording_path(recording) %></td>          </tr>
     <% end %>
-    </dl>
+    </table>
 
 <% end %>
 
