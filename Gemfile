@@ -50,4 +50,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'redcarpet'
+gem 'dotenv-rails', :groups => [:development, :test], :require => 'dotenv/rails-now'
+gem 'aws-sdk'
+
 gem 'rails_12factor', group: :production

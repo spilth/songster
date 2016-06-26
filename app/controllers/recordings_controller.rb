@@ -24,7 +24,11 @@ class RecordingsController < ApplicationController
   # POST /recordings
   # POST /recordings.json
   def create
-    @recording = Recording.new(recording_params)
+    file = params[:recording][:file]
+    bucket_object = S3_BUCKET.object('recordings/' + file.original_filename)
+    bucket_object.upload_file(file.tempfile.path)
+
+    @recording = Recording.new(recording_params.merge( { url: bucket_object.public_url }))
 
     respond_to do |format|
       if @recording.save
@@ -69,6 +73,6 @@ class RecordingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recording_params
-      params.require(:recording).permit(:name, :url, :description, :song_id)
+      params.require(:recording).permit(:name, :url, :description, :song_id, :file)
     end
 end
