@@ -28,7 +28,7 @@ class RecordingsController < ApplicationController
 
     respond_to do |format|
       if @recording.save
-        format.html { redirect_to @recording, notice: 'Recording was successfully created.' }
+        format.html { redirect_to @recording.song, notice: 'Recording was successfully created.' }
         format.json { render :show, status: :created, location: @recording }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RecordingsController < ApplicationController
   def update
     respond_to do |format|
       if @recording.update(recording_params)
-        format.html { redirect_to @recording, notice: 'Recording was successfully updated.' }
+        format.html { redirect_to @recording.song, notice: 'Recording was successfully updated.' }
         format.json { render :show, status: :ok, location: @recording }
       else
         format.html { render :edit }
