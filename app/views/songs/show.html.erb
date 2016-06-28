@@ -20,18 +20,27 @@
         <h2>Recordings</h2>
 
         <table class="table">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Player</th>
+            <th>Download</th>
+          </tr>
+          </thead>
+          <tbody>
           <% @song.recordings.each do |recording| %>
               <tr>
-                <td><%= recording.name %></td>
+                <td><%= link_to recording.name, recording %></td>
                 <td>
                   <audio controls="control" preload="none">
                     <source src="<%= recording.url %>" type="audio/mp3">
                     Your browser does not support the audio element.
                   </audio>
                 </td>
-                <td><%= link_to 'Edit', edit_recording_path(recording), class: "btn btn-default" %></td>
+                <td><%= link_to 'Download', recording.url %></td>
               </tr>
           <% end %>
+          </tbody>
         </table>
       </div>
     </div>

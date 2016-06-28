@@ -1,13 +1,16 @@
+<% content_for(:title) do %>Recordings<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Recordings</h1>
+
+<%= link_to 'Add Recording', new_recording_path, class: 'pull-right btn btn-primary' %>
 
 <table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Song</th>
-      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -16,12 +19,8 @@
       <tr>
         <td><%= link_to recording.name, recording %></td>
         <td><%= link_to recording.song.title, recording.song %></td>
-        <td><%= link_to 'Edit', edit_recording_path(recording) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Recording', new_recording_path %>
