@@ -1,3 +1,5 @@
+<% content_for(:title) do %><%= @song.title %><% end %>
+
 <p id="notice"><%= notice %></p>
 
 <h1><%= @song.title %></h1>
@@ -27,7 +29,7 @@
                     Your browser does not support the audio element.
                   </audio>
                 </td>
-                <td><%= link_to 'Edit', edit_recording_path(recording) %></td>
+                <td><%= link_to 'Edit', edit_recording_path(recording), class: "btn btn-default" %></td>
               </tr>
           <% end %>
         </table>
@@ -65,5 +67,4 @@
     </div>
 <% end %>
 
-<%= link_to 'Edit', edit_song_path(@song) %> |
-<%= link_to 'Back', songs_path %>
+<%= link_to 'Edit Song', edit_song_path(@song), class: "btn btn-primary" %>
