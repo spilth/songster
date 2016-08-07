@@ -6,14 +6,15 @@
   <table class="calendar">
     <tbody>
         <tr>
-          <% (0..180).each do | number | %>
-            <th><div><%= number %></div></th>
+          <% ((DateTime.now)..(DateTime.now + 180.days)).each do | date | %>
+            <th><div><%= date.strftime("%m/%d") %></div></th>
           <% end %>
         </tr>
       <% @contests.each do |contest| %>
         <tr>
           <td colspan="<%= (contest.ends_at.to_datetime - Time.now.to_datetime).to_i %>">
-            <%= link_to contest.name, contest %>
+            <strong><%= link_to contest.name, contest %></strong><br>
+            <%= (contest.ends_at.to_datetime - Time.now.to_datetime).to_i %> days left
           </td>
         </tr>
     <% end %>
