@@ -1,3 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "vextab";
+
+table.calendar th {
+  padding: 0.5em;
+  border:1px solid #fff;
+  background: #ccc;
+}
+
+table.calendar th div {
+  width: 32px;
+}
+
+table.calendar td {
+  padding: 0.5em;
+  background: #ccffcc;
+  border:1px solid #fff;
+}

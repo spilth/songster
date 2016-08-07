@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contests</h1>
+
+<div style="overflow: scroll; overflow-y: hidden">
+  <table class="calendar">
+    <tbody>
+        <tr>
+          <% (0..180).each do | number | %>
+            <th><div><%= number %></div></th>
+          <% end %>
+        </tr>
+      <% @contests.each do |contest| %>
+        <tr>
+          <td colspan="<%= (contest.ends_at.to_datetime - Time.now.to_datetime).to_i %>">
+            <%= link_to contest.name, contest %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+
+<%= link_to 'New Contest', new_contest_path %>
